@@ -3,7 +3,7 @@ import LoginForm from "./authentication/LoginForm";
 import Signupdup from "./authentication/SignUpForm";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ProductProvider from "./Context/ProductContext";
+// import ProductProvider from "./Context/ProductContext";
 import HomePage from "./homepage/HomePage";
 import Cart from "./cart/Cart";
 import Orders from "./cart/Orders";
@@ -22,7 +22,7 @@ import "slick-carousel/slick/slick-theme.css";
 function App() {
   return (
     <Router>
-      <ProductProvider>
+      {/* <ProductProvider> */}
         <AdminProvider>
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -41,7 +41,7 @@ function App() {
             </Route>
           </Routes>
         </AdminProvider>
-      </ProductProvider>
+      {/* </ProductProvider> */}
     </Router>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ProductContext } from "../Context/ProductContext";
+// import { ProductContext } from "../Context/ProductContext";
 
 const ProductModal = ({ product, onClose }) => {
   if (!product) return null;

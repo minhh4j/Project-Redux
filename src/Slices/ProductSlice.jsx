@@ -8,7 +8,6 @@ export const fetchProduct = createAsyncThunk(
       const response = await axios.get('http://localhost:3008/products')
       return response.data;
     } catch (error) {
-    
       return rejectWithValue(error.message);
     }
   }
