@@ -1,11 +1,18 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../Context/ProductContext";
 import ProductModal from "./ProductInfoModal";
+import { useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProduct } from "../Slices/ProductSlice";
+import  { addProductToDBAndCartAsync }  from "../Slices/CartSlice";
+
 
 function Center() {
-  const { product, addToCart, search } = useContext(ProductContext);
+  const { search } = useContext(ProductContext);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("all"); 
+  const dispatch = useDispatch()
+  const {product , loading , error } = useSelector(state => state.product)
 
   const filterSearch = product
     .filter((item) =>
@@ -14,7 +21,7 @@ function Center() {
     .filter((item) =>
       selectedCategory === "all" ? true : item.category === selectedCategory
     );
-
+    
   const handleImageClick = (product) => {
     setSelectedProduct(product);
   };
@@ -23,22 +30,68 @@ function Center() {
     setSelectedProduct(null);
   };
 
-  const handleAddToCartClick = (item) => {
-    if (!localStorage.getItem("id")) {
-      console.log("Please log in to add items to your cart.");
+  const handleAddToCartClick = (product) => {
+    const id = localStorage.getItem('id');
+    if (!id) {
+      console.log('Please log in to add items to your cart.');
     } else {
-      addToCart(item);
-      console.log(`${item.name} added to cart!`);
+      dispatch(addProductToDBAndCartAsync({ id, product }));
+      console.log(`${product.name} added to cart and database!`);
     }
   };
+  
+  
+  useEffect(() => {
+    dispatch(fetchProduct()); 
+  }, [dispatch]); 
+  
+  
+  // Audio setting
+  
+  const cat=()=>{
+    setSelectedCategory("cat")
+    handlePlayAudio()
+  }
+  
+  const audioRef = useRef(null);
+  
+  const handlePlayAudio = () => {
+    if (audioRef.current) {
+      audioRef.current.play(); 
+    }
+  };
+  
+  const dog = () => {
+    setSelectedCategory("dog")
+    handlePlayDog()
+  }
 
+  const dogreff = useRef(null);
+  
+  const handlePlayDog = () => {
+    if(dogreff.current){
+      dogreff.current.play();
+    }
+  }
+  //////
+  
+  if(loading){
+    return <h1>Loading...</h1>
+  }
+   if(error){
+    return <h1>error</h1>
+   }
+  
   return (
     <div className="container py-4">
-      
+      <h4 class="text-center text-2xl font-semibold text-gray-700"><i>"select category"</i></h4>
+      <br />
+      <br />
     <div className="flex justify-center mb-4">
+    
   {/* All Button */}
   <button
-    className={`flex items-center justify-center w-16 h-16 mx-2 rounded-full shadow-md ${
+    className={`flex items-center justify-center w-16 h-16 mx-2 rounded-full shadow-md hover:scale-110 hover:shadow-2xl  transition-all ${
       selectedCategory === "all" ? "bg-blue-600" : "bg-gray-300"
     }`}
     onClick={() => setSelectedCategory("all")}
@@ -46,37 +99,38 @@ function Center() {
     <img
       src="https://img.freepik.com/free-photo/cat-love-being-affectionate-towards-each-other_23-2150984513.jpg?t=st=1735550783~exp=1735554383~hmac=4bd03b88f2ad1748c48520e49888de55f59cc17b567c3badda2fc780f1b80ae4&w=900" 
       alt="All"
-      className="object-cover w-full h-full rounded-full"
+      className="object-cover w-full h-full transition-all rounded-full hover:scale-110 hover:shadow-2xl"
     />
   </button>
 
   {/* Cat Button */}
   <button
-    className={`flex items-center justify-center w-16 h-16 mx-2 rounded-full shadow-md ${
+    className={`flex items-center justify-center w-16 h-16 mx-2 rounded-full shadow-md hover:scale-110 hover:shadow-2xl transition-all${
       selectedCategory === "cat" ? "bg-blue-600" : "bg-gray-300"
     }`}
-    onClick={() => setSelectedCategory("cat")}
+    onClick={cat}
   >
     <img
       src="https://img.freepik.com/free-photo/red-white-cat-i-white-studio_155003-13189.jpg?t=st=1735549987~exp=1735553587~hmac=c26a0ccb15950eda4dd50c45d854f1c3bed383fda8cebe3785c8c13238e7e81b&w=360" 
       alt="Cat"
-      className="object-cover w-full h-full rounded-full"
+      className="object-cover w-full h-full transition-all rounded-full hover:scale-110 hover:shadow-2xl"
     />
   </button>
-
+<audio  ref={audioRef}  src="src\assets\cat sound.wav" muted></audio>
   {/* Dog Button */}
   <button
-    className={`flex items-center justify-center w-16 h-16 mx-2 rounded-full shadow-md ${
+    className={`flex items-center justify-center w-16 h-16 mx-2 rounded-full shadow-md hover:scale-110 hover:shadow-2xl transition-all ${
       selectedCategory === "dog" ? "bg-blue-600" : "bg-gray-300"
     }`}
-    onClick={() => setSelectedCategory("dog")}
+    onClick={dog}
   >
     <img
       src="https://img.freepik.com/free-photo/cute-spitz_144627-7076.jpg?t=st=1735550719~exp=1735554319~hmac=fab93c7f811eeb1fc23b6913c78f694c409eaa017cb7f0e51262784e9d5d7d59&w=740" 
       alt="Dog"
-      className="object-cover w-full h-full rounded-full"
+      className="object-cover w-full h-full transition-all rounded-full hover:scale-110 hover:shadow-2xl"
     />
   </button>
+  <audio ref={dogreff} src="src\assets\dog sound.wav" muted></audio>
 </div>
 
 
@@ -99,12 +153,13 @@ function Center() {
                     ₹{item.oldPrice}
                   </p>
                 )}
-                <button
-                  className="px-4 py-2 mt-2 text-xs font-semibold text-blue-600 transition border border-blue-600 rounded-full hover:bg-blue-100"
-                  onClick={() => handleAddToCartClick(item)}
-                >
-                  Add to Cart
-                </button>
+<button
+  className="px-4 py-2 mt-2 text-xs font-semibold text-blue-600 transition border border-blue-600 rounded-full hover:bg-blue-100"
+  onClick={() => handleAddToCartClick(item)}
+>
+  Add to Cart
+</button>
+
               </div>
             </div>
           </div>

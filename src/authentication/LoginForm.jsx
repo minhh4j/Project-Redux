@@ -18,7 +18,6 @@ function LoginForm() {
 
 
   const navigate = useNavigate();
-
   const validationSchema = Yup.object({
     email: Yup.string()
       .required("Email is required")
@@ -40,7 +39,6 @@ function LoginForm() {
      
         if(user.email === "admin@gmail.com"){
           adminLogin()
-          // navigate("/adminpage")
           return
         }
         if (user.status === true) {
@@ -68,10 +66,6 @@ function LoginForm() {
     }
   }; 
   
-
-  
-
-
   useEffect(() => {
     toast.info("Please login with your credentials", {
       position: "top-center",
@@ -83,14 +77,14 @@ function LoginForm() {
     <div
   className="flex items-center justify-center min-h-screen"
   style={{
-    backgroundImage: `url('https://img.freepik.com/free-photo/view-cats-dogs-showing-friendship_23-2151806300.jpg?t=st=1732357015~exp=1732360615~hmac=586f4bdae6736e8e5b291a630114fca5b4ed5544af861e1c27c33790d94c11de&w=1380')`,
+    backgroundImage: `url('https://img.freepik.com/free-photo/blue-vintage-decorative-balls-background_53876-102739.jpg?t=st=1735556821~exp=1735560421~hmac=ffb4d2569f02f9e513b931efb1b2b9b52c25a67252b7257f6414f2d4269add33&w=1060')`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
   }}
 >
       <div className="w-full sm:w-96">
-        <div className="p-6 bg-transparent rounde-lg bg-whit">
+        <div className="max-w-xs p-6 transition-transform duration-300 ease-in-out rounded-lg shadow-lg bg-gradient-to-r h-100 w-250 hover:scale-105">
           <ToastContainer />
           <h2 className="mb-6 text-2xl font-semibold text-center">Login</h2>
           <Formik

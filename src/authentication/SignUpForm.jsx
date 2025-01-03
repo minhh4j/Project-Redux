@@ -59,13 +59,13 @@ function Signupdup() {
   });
   // /g
   return (
-    <div className="flex items-center justify-start min-h-screen px-4"style={{
-      backgroundImage: `url('https://img.freepik.com/free-photo/view-cats-dogs-showing-friendship_23-2151806307.jpg?t=st=1732356670~exp=1732360270~hmac=6f2850fe06bcd19906d2ad96e76d5dbde337de072705fc194207ede203140ad0&w=1380')`,
+    <div className="flex items-center justify-center min-h-screen px-4"style={{
+      backgroundImage: `url('https://img.freepik.com/free-vector/white-abstract-background_23-2148806271.jpg?t=st=1735557680~exp=1735561280~hmac=cbcf65af9aece8f0f417a1918ceea3538fef27c6233198db7f01d04bf8daa417&w=1060')`,
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
     }} >
-      <div className="max-w-xs p-6 bg-transparent rounded-lg h-100 w-150" >
+      <div className="max-w-xs p-6 transition-transform duration-300 ease-in-out rounded-lg shadow-lg bg-gradient-to-r h-100 w-250 hover:scale-105" >
         <h2 className="mb-6 text-2xl font-semibold text-center">Signup</h2>
         <Formik
           initialValues={initialValues}

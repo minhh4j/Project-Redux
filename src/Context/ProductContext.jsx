@@ -6,7 +6,7 @@ export const ProductContext = createContext();
 
 
 function ProductProvider({ children }) {
-  const [product, setProduct] = useState([]);  
+  // const [product, setProduct] = useState([]);  
   const [serchTream, setSerchTream] = useState("");
   const [cart, setCart] = useState([]);
   const [curretUser, setCorentuser] = useState(null);
@@ -23,17 +23,17 @@ function ProductProvider({ children }) {
   }, [cart]);
 
   //fetch products in home page
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const response = await axios.get("http://localhost:3008/products");
-        setProduct(response.data);
-      } catch (error) {
-        console.error("error fetching products", error);
-      }
-    };
-    fetchProduct();
-  }, []);
+  // useEffect(() => {
+  //   const fetchProduct = async () => {
+  //     try {
+  //       const response = await axios.get("http://localhost:3008/products");
+  //       setProduct(response.data);
+  //     } catch (error) {
+  //       console.error("error fetching products", error);
+  //     }
+  //   };
+  //   fetchProduct();
+  // }, []);
 
 
 
@@ -159,7 +159,7 @@ function ProductProvider({ children }) {
     <ProductContext.Provider
       value={{
         totelAmount,
-        product,
+        // product,
         cart,
         setCart,
         incrementQuantity,

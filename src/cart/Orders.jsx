@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ProductContext } from "../Context/ProductContext";
 
 function Orders() {
-  const { orders , } = useContext(ProductContext);
+  const { orders  } = useContext(ProductContext);
   console.log(orders,"order");
   
 
