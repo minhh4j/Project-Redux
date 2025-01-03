@@ -1,29 +1,43 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const fetchOrdersAsync = createAsyncThunk('orders/fetchOrders', async (id) => {
-  const response = await axios.get(`http://localhost:3008/user/${id}`);
-  return response.data.order;
-});
-
-export const placeOrderAsync = createAsyncThunk(
-  'orders/placeOrder',
-  async ({ id, newOrder }, { getState }) => {
-    const orders = getState().orders.orders;
-    const updatedOrders = [...orders, newOrder];
-    await axios.patch(`http://localhost:3008/user/${id}`, { order: updatedOrders, cart: [] });
-    return updatedOrders;
+export const fetchOrdersAsync = createAsyncThunk(
+  'order/fetchOrders',
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(`http://localhost:3008/user/${id}`);
+      return response.data.order;
+    } catch (error) {
+      return rejectWithValue(error.response ? error.response.data : error.message);
+    }
   }
 );
 
-const ordersSlice = createSlice({
-  name: 'orders',
+export const addOrderAsync = createAsyncThunk(
+  'order/addOrder',
+  async ({ id, orderDetails }, { rejectWithValue }) => {
+    try {
+      const response = await axios.patch(`http://localhost:3008/user/${id}`, { order: orderDetails });
+      return response.data.order;
+    } catch (error) {
+      return rejectWithValue(error.response ? error.response.data : error.message);
+    }
+  }
+);
+
+// Slice to manage orders
+const orderSlice = createSlice({
+  name: 'order',
   initialState: {
     orders: [],
     loading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    clearOrders(state) {
+      state.orders = [];
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchOrdersAsync.pending, (state) => {
@@ -37,10 +51,12 @@ const ordersSlice = createSlice({
         state.error = action.error.message;
         state.loading = false;
       })
-      .addCase(placeOrderAsync.fulfilled, (state, action) => {
+      .addCase(addOrderAsync.fulfilled, (state, action) => {
         state.orders = action.payload;
       });
   },
 });
 
-export default ordersSlice.reducer;
+export const { clearOrders } = orderSlice.actions;
+
+export default orderSlice.reducer;

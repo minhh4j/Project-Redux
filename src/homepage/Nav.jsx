@@ -146,18 +146,25 @@ import { IoMdSearch } from "react-icons/io";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setSearch } from "../Slices/SearchSlice"; // Assuming a searchSlice is set up
+import { fetchCartAsync } from "../Slices/CartSlice";
 
 function Nav() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const ref = useRef(null);
+  
 
   const username = localStorage.getItem("username");
   const isLoggedIn = Boolean(localStorage.getItem("id"));
 
   const { cart } = useSelector((state) => state.cart); // Redux selector for cart
-  const cartCount = cart.length;
+  
+  useEffect(() => {
+    dispatch(fetchCartAsync())
+  },[dispatch, navigate])
+  
+  const cartCount = cart?.length;
 
   const handleSearch = (e) => {
     const searchValue = e.target.value.toLowerCase();

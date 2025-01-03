@@ -13,65 +13,7 @@
       "password": "123654",
       "cpassword": "123654",
       "status": true,
-      "cart": [
-        {
-          "name": "TailWaggers Nutrition Dog Food",
-          "price": 123.65,
-          "oldPrice": 185.48,
-          "category": "dog",
-          "stock": 0,
-          "image": "/src/assets/dogProduct/pd2.jpg",
-          "description": "TailWaggers Nutrition Dog Food is crafted with a blend of wholesome ingredients to keep your dog healthy and happy. This recipe includes essential vitamins and minerals for overall well-being.",
-          "seller": "Animal Kingdom",
-          "ingredients": [
-            "Lamb meal",
-            "Brown rice",
-            "Barley",
-            "Peas",
-            "Chicken fat"
-          ],
-          "id": "2",
-          "quantity": 1
-        },
-        {
-          "name": "WhiskerLickin' Cat Chow",
-          "price": 374.36,
-          "oldPrice": 561.54,
-          "image": "/src/assets/catProduct/cat1.webp",
-          "category": "cat",
-          "seller": "Feline Friends",
-          "id": "3",
-          "stock": 44,
-          "description": "WhiskerLickin' Cat Chow is specially formulated to meet the dietary needs of cats, providing a balanced mix of proteins and nutrients for optimal health.",
-          "ingredients": [
-            "Chicken meal",
-            "Corn",
-            "Soybean meal",
-            "Beet pulp",
-            "Fish meal"
-          ],
-          "quantity": 1
-        },
-        {
-          "id": "4",
-          "name": "Purrfect Paws Cat Food",
-          "price": 311.54,
-          "oldPrice": 467.31,
-          "image": "/src/assets/catProduct/cat2.webp",
-          "category": "cat",
-          "seller": "Pet Supplies",
-          "stock": 55,
-          "description": "Purrfect Paws Cat Food is designed to provide your feline friend with the nutrition they need. This formula includes high-quality proteins to support muscle development.",
-          "ingredients": [
-            "Turkey meal",
-            "Brown rice",
-            "Peas",
-            "Salmon oil",
-            "Vitamins"
-          ],
-          "quantity": 1
-        }
-      ],
+      "cart": [],
       "order": [
         {
           "name": "minhaj",
@@ -373,6 +315,52 @@
             }
           ],
           "orderDate": "2024-12-30T07:17:29.533Z"
+        },
+        {
+          "name": "nm,",
+          "address": "bnm",
+          "phone": "998655986",
+          "items": [
+            {
+              "name": "Royal Dog Food",
+              "price": 528.78,
+              "oldPrice": 1793.11,
+              "category": "dog",
+              "stock": 0,
+              "image": "/src/assets/dogProduct/pd1.jpg",
+              "description": "Barky Bites Premium Dog Food is formulated with high-quality ingredients to provide your dog with a balanced diet. Rich in proteins and healthy fats, this food supports your dog's active lifestyle.",
+              "seller": "PetWorld",
+              "ingredients": [
+                "Chicken meal",
+                "Brown rice",
+                "Sweet potatoes",
+                "Carrots",
+                "Flaxseed"
+              ],
+              "id": "1",
+              "quantity": 1
+            },
+            {
+              "name": "TailWaggers Nutrition Dog Food",
+              "price": 123.65,
+              "oldPrice": 185.48,
+              "category": "dog",
+              "stock": 0,
+              "image": "/src/assets/dogProduct/pd2.jpg",
+              "description": "TailWaggers Nutrition Dog Food is crafted with a blend of wholesome ingredients to keep your dog healthy and happy. This recipe includes essential vitamins and minerals for overall well-being.",
+              "seller": "Animal Kingdom",
+              "ingredients": [
+                "Lamb meal",
+                "Brown rice",
+                "Barley",
+                "Peas",
+                "Chicken fat"
+              ],
+              "id": "2",
+              "quantity": 1
+            }
+          ],
+          "orderDate": "2025-01-03T11:36:18.935Z"
         }
       ]
     },
@@ -1680,6 +1668,132 @@
         "Peas",
         "Salmon oil",
         "Vitamins"
+      ]
+    },
+    {
+      "id": "1",
+      "name": "Royal Dog Food",
+      "price": 528.78,
+      "oldPrice": 1793.11,
+      "category": "dog",
+      "stock": 0,
+      "image": "/src/assets/dogProduct/pd1.jpg",
+      "description": "Barky Bites Premium Dog Food is formulated with high-quality ingredients to provide your dog with a balanced diet. Rich in proteins and healthy fats, this food supports your dog's active lifestyle.",
+      "seller": "PetWorld",
+      "ingredients": [
+        "Chicken meal",
+        "Brown rice",
+        "Sweet potatoes",
+        "Carrots",
+        "Flaxseed"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "TailWaggers Nutrition Dog Food",
+      "price": 123.65,
+      "oldPrice": 185.48,
+      "category": "dog",
+      "stock": 0,
+      "image": "/src/assets/dogProduct/pd2.jpg",
+      "description": "TailWaggers Nutrition Dog Food is crafted with a blend of wholesome ingredients to keep your dog healthy and happy. This recipe includes essential vitamins and minerals for overall well-being.",
+      "seller": "Animal Kingdom",
+      "ingredients": [
+        "Lamb meal",
+        "Brown rice",
+        "Barley",
+        "Peas",
+        "Chicken fat"
+      ]
+    },
+    {
+      "id": "1",
+      "name": "Royal Dog Food",
+      "price": 528.78,
+      "oldPrice": 1793.11,
+      "category": "dog",
+      "stock": 0,
+      "image": "/src/assets/dogProduct/pd1.jpg",
+      "description": "Barky Bites Premium Dog Food is formulated with high-quality ingredients to provide your dog with a balanced diet. Rich in proteins and healthy fats, this food supports your dog's active lifestyle.",
+      "seller": "PetWorld",
+      "ingredients": [
+        "Chicken meal",
+        "Brown rice",
+        "Sweet potatoes",
+        "Carrots",
+        "Flaxseed"
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Happy Tails Cat Delight",
+      "price": 646.18,
+      "oldPrice": 969.27,
+      "image": "/src/assets/catProduct/cat3.webp",
+      "category": "cat",
+      "seller": "Happy Pets",
+      "stock": 57,
+      "description": "Happy Tails Cat Delight is a gourmet food that provides complete nutrition while satisfying your cat's taste buds. Each bite is full of flavor and essential nutrients.",
+      "ingredients": [
+        "Chicken meal",
+        "Fish meal",
+        "Brown rice",
+        "Dried egg product",
+        "Flaxseed"
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Kitty Krunch Gourmet Cat Food",
+      "price": 785.95,
+      "oldPrice": 1178.93,
+      "image": "/src/assets/catProduct/cat2.webp",
+      "category": "cat",
+      "seller": "Cat Haven",
+      "stock": 55,
+      "description": "Kitty Krunch Gourmet Cat Food is crafted with premium ingredients to support your cat's health and vitality. This formula is rich in proteins and omega fatty acids.",
+      "ingredients": [
+        "Chicken meal",
+        "Rice",
+        "Oats",
+        "Peas",
+        "Salmon oil"
+      ]
+    },
+    {
+      "id": "1",
+      "name": "Royal Dog Food",
+      "price": 528.78,
+      "oldPrice": 1793.11,
+      "category": "dog",
+      "stock": 0,
+      "image": "/src/assets/dogProduct/pd1.jpg",
+      "description": "Barky Bites Premium Dog Food is formulated with high-quality ingredients to provide your dog with a balanced diet. Rich in proteins and healthy fats, this food supports your dog's active lifestyle.",
+      "seller": "PetWorld",
+      "ingredients": [
+        "Chicken meal",
+        "Brown rice",
+        "Sweet potatoes",
+        "Carrots",
+        "Flaxseed"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "TailWaggers Nutrition Dog Food",
+      "price": 123.65,
+      "oldPrice": 185.48,
+      "category": "dog",
+      "stock": 0,
+      "image": "/src/assets/dogProduct/pd2.jpg",
+      "description": "TailWaggers Nutrition Dog Food is crafted with a blend of wholesome ingredients to keep your dog healthy and happy. This recipe includes essential vitamins and minerals for overall well-being.",
+      "seller": "Animal Kingdom",
+      "ingredients": [
+        "Lamb meal",
+        "Brown rice",
+        "Barley",
+        "Peas",
+        "Chicken fat"
       ]
     }
   ]

@@ -1,10 +1,18 @@
-import React, { useContext } from "react";
-import { ProductContext } from "../Context/ProductContext";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchOrdersAsync } from "../Slices/OrderSlice";
 
 function Orders() {
-  const { orders  } = useContext(ProductContext);
-  console.log(orders,"order");
-  
+  const dispatch = useDispatch();
+  const { orders, loading, error } = useSelector((state) => state.orders);
+
+  useEffect(() => {
+    const userId = "a5eb"; // Replace with dynamic ID from state, if available
+    dispatch(fetchOrdersAsync(userId));
+  }, [dispatch]);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <div className="min-h-screen p-6 bg-gray-100">
@@ -12,15 +20,18 @@ function Orders() {
 
       {orders.length > 0 ? (
         orders.slice().reverse().map((order, index) => (
-    
           <div key={index} className="p-6 mb-4 bg-white rounded-lg shadow-md">
             <h3 className="text-xl font-semibold">Order #{index + 1}</h3>
-            <p className="mt-2 text-sm text-gray-500">Order Date: {order.orderDate}</p>
-            <h4 className="mt-4 text-lg font-semibold">Total: ₹{order.items.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}</h4>
+            <p className="mt-2 text-sm text-gray-500">
+              Order Date: {new Date(order.orderDate).toLocaleDateString()}
+            </p>
+            <h4 className="mt-4 text-lg font-semibold">
+              Total: ₹{order.items.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}
+            </h4>
             <p className="mt-2 text-sm text-gray-500">Name: {order.name}</p>
-            <p className="mt-2 text-sm text-gray-500">Phone Number:{order.phone}</p>
+            <p className="mt-2 text-sm text-gray-500">Phone Number: {order.phone}</p>
             <p className="mt-2 text-sm text-gray-500">Address: {order.address}</p>
-            
+
             <ul className="mt-4">
               {order.items.map((product, idx) => (
                 <li key={idx} className="flex justify-between py-2 border-b border-gray-300">
